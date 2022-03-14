@@ -1,0 +1,194 @@
+openapi: 3.0.2
+info:
+    title: New API
+    version: 1.0.0
+    description: User Activity Tracking API for the Globex Retail site.
+    license:
+        name: MIT License
+        url: 'https://opensource.org/licenses/MIT'
+paths:
+    /track:
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/user-activity-tracking-payload'
+                        examples:
+                            user-activity-tracking-example:
+                                value:
+                                    idSite: globex-retail
+                                    activity:
+                                        userId: 1234567890abcdef
+                                        url: 'https://globex-retail.com/product/12345/details'
+                                        rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
+                                        type: like
+                                    userInfo:
+                                        visitsCount: 1
+                                        prevVisitTs: 1647249258
+                                        firstVisitTs: 1647249258
+                                        campaign: abc123
+                                        localTime: '2022-03-14T09:26:04+00:00'
+                                        newVisit: 1
+                                    actionInfo:
+                                        search: waterbottle
+                                        searchCat: swag
+                required: true
+            responses:
+                '200':
+                    description: OK
+                '400':
+                    description: Bad Request
+                '403':
+                    description: Forbidden
+                '500':
+                    description: Internal Server Error
+            security:
+                -
+                    user-activity-tracker-api: []
+components:
+    schemas:
+        user-activity-tracking-payload:
+            title: Root Type for user-activity-tracking-payload
+            description: Payload sent with POST requests to user activity tracking API
+            required:
+                - activity
+                - idSite
+                - userInfo
+            type: object
+            properties:
+                idSite:
+                    type: string
+                activity:
+                    $ref: '#/components/schemas/activity'
+                    properties:
+                        userId:
+                            type: string
+                        url:
+                            type: string
+                        rand:
+                            type: string
+                        type:
+                            type: string
+                userInfo:
+                    $ref: '#/components/schemas/user-info'
+                    properties:
+                        visitsCount:
+                            format: int32
+                            type: integer
+                        prevVisitTs:
+                            format: int32
+                            type: integer
+                        firstVisitTs:
+                            format: int32
+                            type: integer
+                        campaign:
+                            type: string
+                        localTime:
+                            format: date-time
+                            type: string
+                        newVisit:
+                            format: int32
+                            type: integer
+                actionInfo:
+                    $ref: '#/components/schemas/action-info'
+                    properties:
+                        search:
+                            type: string
+                        searchCat:
+                            type: string
+            example:
+                idSite: globex-retail
+                activity:
+                    userId: 1234567890abcdef
+                    url: 'https://globex-retail.com/product/12345/details'
+                    rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
+                    type: like
+                userInfo:
+                    visitsCount: 1
+                    prevVisitTs: 1647249258
+                    firstVisitTs: 1647249258
+                    campaign: abc123
+                    localTime: '2022-03-14T09:26:04+00:00'
+                    newVisit: 1
+                actionInfo:
+                    search: waterbottle
+                    searchCat: swag
+        activity:
+            title: Root Type for activity
+            description: ''
+            required:
+                - rand
+                - type
+                - url
+                - userId
+            type: object
+            properties:
+                userId:
+                    type: string
+                url:
+                    type: string
+                rand:
+                    type: string
+                type:
+                    type: string
+            example:
+                userId: 1234567890abcdef
+                url: 'https://globex-retail.com/product/12345/details'
+                rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
+                type: like
+        action-info:
+            title: Root Type for action-info
+            description: ''
+            type: object
+            properties:
+                search:
+                    type: string
+                searchCat:
+                    type: string
+            example:
+                search: waterbottle
+                searchCat: swag
+        user-info:
+            title: Root Type for user-info
+            description: ''
+            required:
+                - localTime
+            type: object
+            properties:
+                visitsCount:
+                    type: integer
+                prevVisitTs:
+                    type: integer
+                firstVisitTs:
+                    format: int32
+                    type: integer
+                campaign:
+                    type: string
+                localTime:
+                    format: date-time
+                    type: string
+                newVisit:
+                    type: integer
+            example:
+                visitsCount: 1
+                prevVisitTs: 1647249258
+                firstVisitTs: 1647249258
+                campaign: abc123
+                localTime: '2022-03-14T09:26:04+00:00'
+                newVisit: 1
+    securitySchemes:
+        user-activity-tracker-api:
+            type: apiKey
+            name: api_key
+            in: query
+security:
+    -
+        user-activity-tracker-api: []
+tags:
+    -
+        name: retail
+        description: ''
+    -
+        name: user-activity-tracking
+        description: ''

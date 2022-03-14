@@ -1,0 +1,1 @@
+API Definition for the Globex Retail User Activity Tracking API

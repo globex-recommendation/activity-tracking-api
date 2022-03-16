@@ -137,18 +137,6 @@ components:
                 url: 'https://globex-retail.com/product/12345/details'
                 rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
                 type: like
-        action-info:
-            title: Root Type for action-info
-            description: ''
-            type: object
-            properties:
-                search:
-                    type: string
-                searchCat:
-                    type: string
-            example:
-                search: waterbottle
-                searchCat: swag
         user-info:
             title: Root Type for user-info
             description: ''
@@ -177,6 +165,21 @@ components:
                 campaign: abc123
                 localTime: '2022-03-14T09:26:04+00:00'
                 newVisit: 1
+        action-info:
+            title: Root Type for action-info
+            description: ''
+            type: object
+            properties:
+                search:
+                    type: string
+                searchCat:
+                    type: string
+                productId:
+                    type: string
+            example:
+                productId: a12345
+                search: waterbottle
+                searchCat: swag
     securitySchemes:
         user-activity-tracker-api:
             type: apiKey

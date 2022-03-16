@@ -2,7 +2,7 @@ openapi: 3.0.2
 info:
     title: New API
     version: 1.0.0
-    description: User Activity Tracking API for the Globex Retail site.
+    description: Activity Tracking API for the Globex Retail site.
     license:
         name: MIT License
         url: 'https://opensource.org/licenses/MIT'
@@ -13,7 +13,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/user-activity-tracking-payload'
+                            $ref: '#/components/schemas/activity-tracking-payload'
                         examples:
                             user-activity-tracking-example:
                                 value:
@@ -48,9 +48,9 @@ paths:
                     user-activity-tracker-api: []
 components:
     schemas:
-        user-activity-tracking-payload:
-            title: Root Type for user-activity-tracking-payload
-            description: Payload sent with POST requests to user activity tracking API
+        activity-tracking-payload:
+            title: Root Type for activity-tracking-payload
+            description: Payload sent with POST requests to activity tracking API
             required:
                 - activity
                 - idSite
@@ -149,7 +149,6 @@ components:
                 prevVisitTs:
                     type: integer
                 firstVisitTs:
-                    format: int32
                     type: integer
                 campaign:
                     type: string

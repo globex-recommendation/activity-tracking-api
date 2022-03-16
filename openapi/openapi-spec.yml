@@ -180,17 +180,17 @@ components:
                 search: waterbottle
                 searchCat: swag
     securitySchemes:
-        user-activity-tracker-api:
+        activity-tracker-api:
             type: apiKey
             name: api_key
             in: query
 security:
     -
-        user-activity-tracker-api: []
+        activity-tracker-api: []
 tags:
     -
         name: retail
         description: ''
     -
-        name: user-activity-tracking
+        name: activity-tracking
         description: ''

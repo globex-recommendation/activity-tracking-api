@@ -19,7 +19,7 @@ paths:
                                 value:
                                     idSite: globex-retail
                                     activity:
-                                        userId: 1234567890abcdef
+                                        userId: 7672a49e-9afc-498f-91bc-98f881179f2c
                                         url: 'https://globex-retail.com/product/12345/details'
                                         rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
                                         type: like
@@ -100,7 +100,7 @@ components:
             example:
                 idSite: globex-retail
                 activity:
-                    userId: 1234567890abcdef
+                    userId: 7672a49e-9afc-498f-91bc-98f881179f2c
                     url: 'https://globex-retail.com/product/12345/details'
                     rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
                     type: like
@@ -133,7 +133,7 @@ components:
                 type:
                     type: string
             example:
-                userId: 1234567890abcdef
+                userId: 7672a49e-9afc-498f-91bc-98f881179f2c
                 url: 'https://globex-retail.com/product/12345/details'
                 rand: ba6eb330-4f7f-11eb-a2fb-67c34e9ac07c
                 type: like

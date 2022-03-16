@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-    title: New API
+    title: Activity Tracking API
     version: 1.0.0
     description: Activity Tracking API for the Globex Retail site.
     license:

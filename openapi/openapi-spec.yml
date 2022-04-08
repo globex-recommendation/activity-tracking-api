@@ -32,6 +32,7 @@ paths:
                                         newVisit: 1
                                     actionInfo:
                                         productId: a12345
+                                        category: cat123456
                                         search: waterbottle
                                         searchCat: swag
                 required: true
@@ -94,6 +95,10 @@ components:
                 actionInfo:
                     $ref: '#/components/schemas/action-info'
                     properties:
+                        productId:
+                            type: string
+                        category:
+                            type: string
                         search:
                             type: string
                         searchCat:
@@ -114,6 +119,7 @@ components:
                     newVisit: 1
                 actionInfo:
                     productId: a12345
+                    category: cat123456
                     search: waterbottle
                     searchCat: swag
         activity:
@@ -173,12 +179,15 @@ components:
             properties:
                 search:
                     type: string
+                category:
+                    type: string
                 searchCat:
                     type: string
                 productId:
                     type: string
             example:
                 productId: a12345
+                category: cat123456
                 search: waterbottle
                 searchCat: swag
     securitySchemes:
